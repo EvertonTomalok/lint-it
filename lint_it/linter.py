@@ -24,19 +24,19 @@ def run_commands(name, inplace, exclude_path=""):
     os.system(
         f"autoflake -r {'--in-place' if inplace else ''}"
         f"{'--exclude ' + exclude_path if exclude_path else ''} "
-        "--remove-unused-variables --remove-all-unused-imports  **/"
+        "--remove-unused-variables --remove-all-unused-imports"
     )
 
     click.echo("Running isort...")
     os.system(
-        "isort **/ --multi-line 3 --trailing-comma --line-width 88 "
+        "isort . --multi-line 3 --trailing-comma --line-width 88 "
         f"{'--skip ' + exclude_path if exclude_path else ''} "
         f"{'--check-only' if not inplace else ''}"
     )
 
     click.echo("Running black...")
     os.system(
-        f"black **/ "
+        f"black **/*.py "
         f"{'--exclude ' + exclude_path if exclude_path else ''} "
         f"{'--check' if not inplace else ''}"
     )
