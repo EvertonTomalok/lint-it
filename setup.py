@@ -1,4 +1,5 @@
 import setuptools
+from lint_it import __version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -14,7 +15,7 @@ dependencies = [
 
 setuptools.setup(
     name="lintit",
-    version="0.0.31",
+    version=__version__,
     author="Everton Tomalok",
     author_email="evertontomalok123@gmail.com",
     description="A cli linter",
