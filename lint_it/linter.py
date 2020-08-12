@@ -22,16 +22,17 @@ def worker(format_code, inplace, exclude_path, lint):
 def run_commands(name, inplace, exclude_path=""):
     click.echo("Running auto-flake... ")
     os.system(
-        f"autoflake -r {'--in-place' if inplace else ''}"
+        f"autoflake -r {'--in-place' if inplace else ''} "
+        "--remove-unused-variables --remove-all-unused-imports "
         f"{'--exclude ' + exclude_path if exclude_path else ''} "
-        "--remove-unused-variables --remove-all-unused-imports"
+        "."
     )
 
     click.echo("Running isort...")
     os.system(
         "isort . --multi-line 3 --trailing-comma --line-width 88 "
         f"{'--skip ' + exclude_path if exclude_path else ''} "
-        f"{'--check-only' if not inplace else ''}"
+        f"{'--check-only' if not inplace else ''} "
     )
 
     click.echo("Running black...")
