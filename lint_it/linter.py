@@ -37,7 +37,7 @@ def run_commands(name, inplace, exclude_path=""):
 
     click.echo("Running black...")
     os.system(
-        f"black **/*.py "
+        f"black . "
         f"{'--exclude ' + exclude_path if exclude_path else ''} "
         f"{'--check' if not inplace else ''}"
     )
