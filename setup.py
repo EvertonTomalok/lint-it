@@ -14,7 +14,7 @@ dependencies = [
 
 setuptools.setup(
     name="lintit",
-    version="0.0.1b",
+    version="0.0.3",
     author="Everton Tomalok",
     author_email="evertontomalok123@gmail.com",
     description="A cli linter",

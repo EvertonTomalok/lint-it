@@ -11,7 +11,6 @@ import click
 )
 @click.option("--lint", "-l", is_flag=True, help="Lint the code")
 def worker(format_code, inplace, exclude_path, lint):
-    click.echo(f"{os.getcwd()}")
     if format_code:
         click.echo(f"Formatting code... \nInplace -> {inplace}")
         run_commands(inplace, exclude_path)
@@ -48,4 +47,4 @@ def main():
 
 
 if __name__ == "__main__":
-    worker()
+    main()

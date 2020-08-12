@@ -2,4 +2,4 @@ from lint_it import __version__
 
 
 def test_version():
-    assert __version__ == "0.0.1b"
+    assert __version__ == "0.0.3"
