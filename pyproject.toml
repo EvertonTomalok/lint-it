@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lint-it"
-version = "0.0.1"
+version = "0.0.1b"
 description = ""
 authors = ["Everton <evertontomalok123@gmail.com>"]
 

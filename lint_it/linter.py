@@ -43,5 +43,9 @@ def run_commands(inplace, exclude_path=""):
     )
 
 
+def main():
+    worker()
+
+
 if __name__ == "__main__":
     worker()
