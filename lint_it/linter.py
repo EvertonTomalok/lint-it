@@ -13,13 +13,13 @@ import click
 def worker(format_code, inplace, exclude_path, lint):
     if format_code:
         click.echo(f"Formatting code... \nInplace -> {inplace}")
-        run_commands(inplace, exclude_path)
+        run_commands("format", inplace, exclude_path)
     elif lint:
         click.echo("Running lint...")
-        run_commands(inplace=False, exclude_path=exclude_path)
+        run_commands("linter", inplace=False, exclude_path=exclude_path)
 
 
-def run_commands(inplace, exclude_path=""):
+def run_commands(name, inplace, exclude_path=""):
     click.echo("Running auto-flake... ")
     os.system(
         f"autoflake -r {'--in-place' if inplace else ''}"
@@ -40,6 +40,13 @@ def run_commands(inplace, exclude_path=""):
         f"{'--exclude ' + exclude_path if exclude_path else ''} "
         f"{'--check' if not inplace else ''}"
     )
+
+    if name == "linter":
+        click.echo("Running mypy...")
+        os.system("mypy **/*.py --ignore-missing-imports")
+
+        click.echo("Running flake8...")
+        os.system("flake8 .")
 
 
 def main():
